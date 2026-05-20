@@ -1,0 +1,29 @@
+/* =========================
+   Revo Creative — Stylesheet (entry point)
+   ---------------------------------------------
+   Modular CSS — each feature lives in modules/<name>.css
+   HTML files still link to this single file; @import pulls the rest in.
+   ========================= */
+
+/* ----- Foundation ----- */
+@import "modules/base.css";          /* tokens, reset, typography, .container, .section, buttons, .reveal */
+
+/* ----- Layout chrome (shared across all pages) ----- */
+@import "modules/navbar.css";        /* fixed top navbar + mobile drawer */
+@import "modules/footer.css";        /* footer grid + socials */
+
+/* ----- Hero patterns ----- */
+@import "modules/hero.css";          /* homepage hero (.hero) */
+@import "modules/page-hero.css";     /* sub-page hero (.page-hero) used by products / portfolio / about / contact */
+
+/* ----- Homepage sections ----- */
+@import "modules/services.css";      /* "What We Handle" — 4-up service cards */
+@import "modules/clients.css";       /* "Our Clients" — logo grid */
+@import "modules/split-block.css";   /* "Our Process" — illustration + numbered steps */
+@import "modules/cta-banner.css";    /* re-usable dark CTA banner */
+
+/* ----- Page-specific ----- */
+@import "modules/products.css";      /* carousel on index.html + detail page products.html */
+@import "modules/portfolio.css";     /* portfolio.html — filter pills + grid */
+@import "modules/about.css";         /* about.html — story / values / team / why */
+@import "modules/contact.css";       /* inline form on index + dedicated contact.html */

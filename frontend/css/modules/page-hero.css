@@ -1,0 +1,47 @@
+/* =========================
+   Page hero (sub-pages: products, portfolio, about, contact)
+   ========================= */
+.page-hero {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(30, 144, 255, 0.20), transparent 50%),
+    linear-gradient(135deg, #0A1A30, #102542 60%, #14305c);
+  color: var(--color-white);
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.page-hero .container { position: relative; z-index: 1; }
+
+.breadcrumbs {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 16px;
+}
+
+.breadcrumbs a:hover { color: var(--color-white); }
+
+.page-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(34px, 5vw, 52px);
+  margin-bottom: 14px;
+  letter-spacing: -1px;
+}
+
+.page-hero p {
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 620px;
+  font-size: 17px;
+}

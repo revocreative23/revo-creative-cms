@@ -1,0 +1,98 @@
+/* =========================
+   Footer (+ social icons)
+   ========================= */
+.footer {
+  background: var(--color-navy-deep);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 70px 0 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.footer-brand img {
+  height: 60px;
+  margin-bottom: 18px;
+}
+
+.footer-brand p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer h5 {
+  color: var(--color-white);
+  font-size: 15px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer ul a {
+  font-size: 14.5px;
+  transition: color var(--transition);
+}
+
+.footer ul a:hover {
+  color: var(--color-primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+}
+
+.social-ico {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  display: grid;
+  place-items: center;
+  transition: all var(--transition);
+}
+
+.social-ico img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.social-ico:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+.social-ico:hover img {
+  transform: scale(1.08);
+}
+
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+}

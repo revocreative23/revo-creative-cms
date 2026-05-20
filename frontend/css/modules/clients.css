@@ -1,0 +1,53 @@
+/* =========================
+   Clients grid (homepage)
+   ========================= */
+.clients {
+  background: var(--color-light);
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.client-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  height: 110px;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  transition: all var(--transition);
+}
+
+.client-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(30, 144, 255, 0.30);
+}
+
+.client-card img {
+  max-height: 56px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(40%);
+  opacity: 0.85;
+  transition: all var(--transition);
+}
+
+.client-card:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .clients-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+}
