@@ -1,0 +1,390 @@
+{
+  "info": {
+    "name": "Revo Creative CMS API",
+    "description": "Collection lengkap untuk testing backend Revo Creative CMS.\n\n**Cara pakai:**\n1. Import file ini ke Postman\n2. Aktifkan environment 'Revo CMS Local' (di-import otomatis)\n3. Jalankan request 'Auth → Login' dulu — cookie session akan otomatis tersimpan\n4. Request lain bisa dijalankan tanpa setup tambahan\n\n**Update env variables di tab Environments** kalau base URL atau credential berbeda.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "admin_email",
+      "value": "admin@revocreative.local",
+      "type": "string"
+    },
+    {
+      "key": "admin_password",
+      "value": "admin12345",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "GET /api/health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "POST /api/auth/login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{admin_email}}\",\n  \"password\": \"{{admin_password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/auth/me",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/auth/me",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/auth/logout",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/api/auth/logout",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "item": [
+        {
+          "name": "GET /api/settings (public)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/settings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "settings"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/admin/settings",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/admin/settings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "settings"]
+            }
+          }
+        },
+        {
+          "name": "PUT /api/admin/settings/:key",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"+62 812-3456-7890\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/settings/company_phone",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "settings", "company_phone"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Logos",
+      "item": [
+        {
+          "name": "GET /api/logos/active (public)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/logos/active",
+              "host": ["{{base_url}}"],
+              "path": ["api", "logos", "active"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/admin/logos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/admin/logos?type=light",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "logos"],
+              "query": [{"key": "type", "value": "light"}]
+            }
+          }
+        },
+        {
+          "name": "POST /api/admin/logos",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"light\",\n  \"file_path\": \"/uploads/logos/GANTI-DENGAN-PATH-DARI-UPLOAD.webp\",\n  \"activate\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/logos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "logos"]
+            }
+          }
+        },
+        {
+          "name": "PUT /api/admin/logos/:id/activate",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{base_url}}/api/admin/logos/1/activate",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "logos", "1", "activate"]
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/admin/logos/:id",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/admin/logos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "logos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Portfolio",
+      "item": [
+        {
+          "name": "GET /api/portfolio (public)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/portfolio?category=website",
+              "host": ["{{base_url}}"],
+              "path": ["api", "portfolio"],
+              "query": [{"key": "category", "value": "website", "disabled": true}]
+            }
+          }
+        },
+        {
+          "name": "GET /api/admin/portfolio",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/admin/portfolio",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "portfolio"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/admin/portfolio/:id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/admin/portfolio/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "portfolio", "1"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/admin/portfolio",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"ISI — Ikatan Surveyor Indonesia\",\n  \"category\": \"website\",\n  \"category_label\": \"Web + CMS + Membership\",\n  \"description\": \"Re-frame website company profile ISI lengkap dengan Content Management System yang terintegrasi dengan sistem keanggotaan & membership, serta kalender kegiatan organisasi.\",\n  \"thumbnail_path\": \"/uploads/portfolio/logo-isi.jpg\",\n  \"tags\": [\"ISI\", \"Membership System\", \"Event Calendar\", \"CMS\"],\n  \"display_order\": 1,\n  \"is_published\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/portfolio",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "portfolio"]
+            }
+          }
+        },
+        {
+          "name": "PUT /api/admin/portfolio/:id",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"ISI — Ikatan Surveyor Indonesia (Updated)\",\n  \"category\": \"website\",\n  \"category_label\": \"Web + CMS + Membership\",\n  \"description\": \"Update deskripsi...\",\n  \"thumbnail_path\": \"/uploads/portfolio/logo-isi.jpg\",\n  \"tags\": [\"ISI\", \"Membership\", \"CMS\"],\n  \"display_order\": 1,\n  \"is_published\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/portfolio/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "portfolio", "1"]
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/admin/portfolio/:id",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/admin/portfolio/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "portfolio", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "GET /api/products (public)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/admin/products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/admin/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/admin/products",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Company Profile + CMS\",\n  \"slug\": \"company-profile-cms\",\n  \"description\": \"Website company profile dengan Content Management System yang mudah dikelola sendiri.\",\n  \"thumbnail_path\": \"/uploads/products/cms-thumbnail.png\",\n  \"features\": [\"Custom Domain\", \"CMS Editor\", \"SEO Ready\", \"Mobile Responsive\", \"Free SSL\"],\n  \"price\": \"Mulai Rp 3.5jt\",\n  \"display_order\": 1,\n  \"is_published\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products"]
+            }
+          }
+        },
+        {
+          "name": "PUT /api/admin/products/:id",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Company Profile + CMS (Updated)\",\n  \"slug\": \"company-profile-cms\",\n  \"description\": \"Update deskripsi...\",\n  \"thumbnail_path\": \"/uploads/products/cms-thumbnail.png\",\n  \"features\": [\"Custom Domain\", \"CMS Editor\"],\n  \"price\": \"Mulai Rp 4jt\",\n  \"display_order\": 1,\n  \"is_published\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/products/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products", "1"]
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/admin/products/:id",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/admin/products/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Upload",
+      "item": [
+        {
+          "name": "POST /api/admin/upload (multipart)",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Pilih file gambar (png, jpg, jpeg, webp, svg, gif, ico) max 5MB"
+                },
+                {
+                  "key": "subdir",
+                  "value": "logos",
+                  "type": "text",
+                  "description": "Optional: subfolder pengelompokan (logos / portfolio / products)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/upload",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "upload"]
+            }
+          }
+        },
+        {
+          "name": "GET /uploads/<file> (public access)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/uploads/logos/GANTI-NAMA-FILE-DARI-UPLOAD",
+              "host": ["{{base_url}}"],
+              "path": ["uploads", "logos", "GANTI-NAMA-FILE-DARI-UPLOAD"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
